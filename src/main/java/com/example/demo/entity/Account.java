@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,11 +41,24 @@ public class Account {
 	@Column
 	private String lastName;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "department_id")
+	@JsonManagedReference
 	private Department department;
 	
 	@Column
 	private LocalDateTime createDate;
-	
+
+	@Override
+	public String toString() {
+		return "Account{" +
+				"id=" + id +
+				", email='" + email + '\'' +
+				", username='" + username + '\'' +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+
+				", createDate=" + createDate +
+				'}';
+	}
 }

@@ -24,4 +24,10 @@ public interface IDepartmentService {
 	public boolean isDepartmentExistsByID(short id);
 
 	public boolean isDepartmentExistsByName(String name);
+
+	List<Department> searchWithDepartmentName(String name);
+
+	List<Department> minMaxWithDepartmentId(String min, String max);
+
+	List<Department> numberOfEmployeesBetween(Long minAccount, Long maxAccount);
 }

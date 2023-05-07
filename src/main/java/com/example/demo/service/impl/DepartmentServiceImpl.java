@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.demo.repository.CustomDepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -81,6 +82,21 @@ public class DepartmentServiceImpl implements IDepartmentService {
 	public boolean isDepartmentExistsByName(String name) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public List<Department> searchWithDepartmentName(String name) {
+		return departmentRepository.findAll(CustomDepartmentRepository.nameLike(name));
+	}
+
+	@Override
+	public List<Department> minMaxWithDepartmentId(String min, String max) {
+		return departmentRepository.findAll(CustomDepartmentRepository.minMaxWithDepartmentId(Short.valueOf(min),Short.valueOf(max)));
+	}
+
+	@Override
+	public List<Department> numberOfEmployeesBetween(Long minAccount, Long maxAccount) {
+		return departmentRepository.findAll(CustomDepartmentRepository.hasNumberOfEmployeesBetween(minAccount,maxAccount));
 	}
 
 }

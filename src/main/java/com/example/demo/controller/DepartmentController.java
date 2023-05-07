@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.validation.Valid;
@@ -103,4 +104,18 @@ public class DepartmentController {
 				.body(new ResponseObject("ok", messageSource.getMessage("delete.message", null, locale), 0, department));
 	}
 
+	@GetMapping("/search")
+	private List<Department> searchWithDepartmentName(@RequestParam String name) {
+		return departmentService.searchWithDepartmentName(name);
+	}
+
+	@GetMapping("/min-max")
+	private List<Department> minMaxMyDepartmentId(@RequestParam String min,@RequestParam String max) {
+		return departmentService.minMaxWithDepartmentId(min,max);
+	}
+
+	@GetMapping("/account")
+	private List<Department> numberOfEmployeesBetween(@RequestParam Long min,@RequestParam Long max) {
+		return departmentService.numberOfEmployeesBetween(min,max);
+	}
 }
