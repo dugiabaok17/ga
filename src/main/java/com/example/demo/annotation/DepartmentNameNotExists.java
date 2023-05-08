@@ -12,7 +12,8 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = DepartmentNameNotExistsValidator.class)
 public @interface DepartmentNameNotExists {
-	String message() default "Tên phong ban đã tồn tại";
+
+	String message() default "{exist.message}";
 
 	Class<?>[] groups() default {};
 

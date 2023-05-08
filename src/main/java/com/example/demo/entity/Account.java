@@ -41,7 +41,7 @@ public class Account {
 	@Column
 	private String lastName;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "department_id")
 	@JsonManagedReference
 	private Department department;

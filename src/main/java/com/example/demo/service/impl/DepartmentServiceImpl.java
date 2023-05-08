@@ -96,7 +96,7 @@ public class DepartmentServiceImpl implements IDepartmentService {
 
 	@Override
 	public List<Department> numberOfEmployeesBetween(Long minAccount, Long maxAccount) {
-		return departmentRepository.findAll(CustomDepartmentRepository.hasNumberOfEmployeesBetween(minAccount,maxAccount));
+		return departmentRepository.findAll(CustomDepartmentRepository.hasNumberOfDepartmentBetween(minAccount,maxAccount));
 	}
 
 }

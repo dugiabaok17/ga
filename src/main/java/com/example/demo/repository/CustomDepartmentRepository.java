@@ -15,7 +15,7 @@ public class CustomDepartmentRepository {
         return (root, query, criteriaBuilder) -> criteriaBuilder.between(root.get("id"), min, max);
     }
 
-    public static Specification<Department> hasNumberOfEmployeesBetween(Long min, Long max) {
+    public static Specification<Department> hasNumberOfDepartmentBetween(Long min, Long max) {
         return (root, query, criteriaBuilder) -> {
             Join<Department, Account> join = root.join("accounts", JoinType.LEFT);
             query.groupBy(root.get("id"));
@@ -28,4 +28,6 @@ public class CustomDepartmentRepository {
             return query.distinct(true).getRestriction();
         };
     }
+    
+	
 }
