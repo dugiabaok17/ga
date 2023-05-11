@@ -2,16 +2,16 @@ package com.example.demo.entity;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -51,14 +51,9 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account{" +
-				"id=" + id +
-				", email='" + email + '\'' +
-				", username='" + username + '\'' +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-
-				", createDate=" + createDate +
-				'}';
+		return "Account [id=" + id + ", email=" + email + ", username=" + username + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", department=" + department + ", createDate=" + createDate + "]";
 	}
+
+	
 }

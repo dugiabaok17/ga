@@ -1,32 +1,20 @@
 package com.example.demo.response;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
-@Table
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class DepartmentResponse {
 	@Id
 	private Long id;
 	
-	private String name;
-	
-	public String getName() {
-		return name;
-	}
+	private String departmentName;
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	
 }

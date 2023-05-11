@@ -1,19 +1,27 @@
 package com.example.demo.response;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
+
+@Builder
+@Setter
+@Getter
 public class ResponseObject {
 	private String status;
 	private String message;
 	private int errCode;
-	private Object data;
+	private Object error;
+	private String detailMessage;
 
 	public ResponseObject() {
 	}
 
-	public ResponseObject(String status, String message, int errCode, Object data) {
+	public ResponseObject(String status, String message, int errCode, Object error) {
 		this.status = status;
 		this.message = message;
 		this.errCode = errCode;
-		this.data = data;
+		this.error = error;
 	}
 
 	public String getStatus() {
@@ -40,17 +48,25 @@ public class ResponseObject {
 		this.errCode = errCode;
 	}
 
-	public Object getData() {
-		return data;
+	public Object getError() {
+		return error;
 	}
 
-	public void setData(Object data) {
-		this.data = data;
+	public void setError(Object error) {
+		this.error = error;
 	}
 
 	@Override
 	public String toString() {
-		return "ResponseObject [status=" + status + ", message=" + message + ", errCode=" + errCode + ", data=" + data
+		return "ResponseObject [status=" + status + ", message=" + message + ", errCode=" + errCode + ", error=" + error
 				+ "]";
+	}
+
+	public ResponseObject(String status, String message, int errCode, Object error, String detailMessage) {
+		this.status = status;
+		this.message = message;
+		this.errCode = errCode;
+		this.error = error;
+		this.detailMessage = detailMessage;
 	}
 }

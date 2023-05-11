@@ -1,10 +1,13 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.Account;
-import com.example.demo.entity.Department;
 import org.springframework.data.jpa.domain.Specification;
 
-import javax.persistence.criteria.*;
+import com.example.demo.entity.Account;
+import com.example.demo.entity.Department;
+
+import jakarta.persistence.criteria.Join;
+import jakarta.persistence.criteria.JoinType;
+import jakarta.persistence.criteria.Predicate;
 
 public class CustomDepartmentRepository {
     public static Specification<Department> nameLike(String name) {

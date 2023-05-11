@@ -5,9 +5,10 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 
 import com.example.demo.entity.Department;
+import com.example.demo.response.DepartmentResponse;
 
 public interface IDepartmentService {
-	public Page<Department> getAllDepartments(Integer pageNo, Integer pageSize, String sortBy);
+	public Page<DepartmentResponse> getAllDepartments(Integer pageNo, Integer pageSize, String sortBy);
 
 	public Department getDepartmentByID(Short id);
 
@@ -15,15 +16,9 @@ public interface IDepartmentService {
 
 	public void createDepartment(Department department);
 
-	public void updateDepartment(short id, String newName);
-
 	public void updateDepartment(Department department);
 
 	public void deleteDepartment(short id);
-
-	public boolean isDepartmentExistsByID(short id);
-
-	public boolean isDepartmentExistsByName(String name);
 
 	List<Department> searchWithDepartmentName(String name);
 

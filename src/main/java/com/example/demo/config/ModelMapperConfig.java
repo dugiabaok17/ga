@@ -22,13 +22,6 @@ public class ModelMapperConfig {
 		return modelMapper;
 	}
 
-//	@Bean
-//	public ResourceBundleMessageSource bundleMessageSource() {
-//		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-//		messageSource.setBasename("messages");
-//		return messageSource;
-//	}
-
 	@Bean
 	public MessageSource messageSource() {
 		ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();

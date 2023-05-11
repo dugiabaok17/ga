@@ -1,30 +1,39 @@
 package com.example.demo.request;
 
-import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
+import org.hibernate.validator.constraints.Length;
 
 import com.example.demo.annotation.DepartmentNameNotExists;
 
+import jakarta.validation.constraints.NotBlank;
+
 public class DepartmentRequest {
-	
-	@Autowired
-	private MessageSource messageSource;
+
 	
 	
 	@NotBlank(message = "{notBlank.message}")
 	@DepartmentNameNotExists
-	private String name;
+	@Length(max = 30)
+	private String departmentName;
 	
+	private LocalDateTime createdDate;
 
-
-	public String getName() {
-		return name;
+	public String getDepartmentName() {
+		return departmentName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDepartmentName(String departmentName) {
+		this.departmentName = departmentName;
 	}
+
+	public LocalDateTime getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(LocalDateTime createdDate) {
+		this.createdDate = createdDate;
+	}
+	
 	
 }

@@ -10,6 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepartmentIdNotExists extends RuntimeException {
+
+	private static final long serialVersionUID = 1L;
 	private int code;
 	private String message;
 }

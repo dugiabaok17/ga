@@ -1,14 +1,14 @@
 package com.example.demo.annotation;
 
-import javax.validation.ConstraintValidator;
-import javax.validation.ConstraintValidatorContext;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 import com.example.demo.entity.Department;
 import com.example.demo.service.IDepartmentService;
+
+import jakarta.validation.ConstraintValidator;
+import jakarta.validation.ConstraintValidatorContext;
 
 public class DepartmentNameNotExistsValidator implements ConstraintValidator<DepartmentNameNotExists, String> {
 
