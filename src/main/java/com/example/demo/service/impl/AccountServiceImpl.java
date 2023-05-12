@@ -26,15 +26,15 @@ public class AccountServiceImpl {
 		Specification<Account> specification = Specification.where(null);
 
 		if (search.getDepartmentName() != null && !search.getDepartmentName().isEmpty()) {
-			specification = CustomAccountRepository.searchDepartmentName(search);
+			specification = specification.and(CustomAccountRepository.searchDepartmentName(search));
 		}
 
 		if (search.getUsername() != null && !search.getUsername().isEmpty()) {
-			specification = CustomAccountRepository.searchAccountUserName(search);
+			specification = specification.and(CustomAccountRepository.searchAccountUserName(search));
 		}
 
 		if (accountFilter.getDepartmentType() != null && !accountFilter.getDepartmentType().isEmpty()) {
-			specification = CustomAccountRepository.filterDepartmentName(accountFilter);
+			specification = specification.and(CustomAccountRepository.filterDepartmentName(accountFilter));
 		}
 
 		List<Account> accounts = accountRepository.findAll(specification);

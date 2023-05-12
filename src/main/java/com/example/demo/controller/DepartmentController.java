@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Locale;
@@ -27,6 +28,7 @@ import com.example.demo.exception.DepartmentIdNotExists;
 import com.example.demo.request.DepartmentRequest;
 import com.example.demo.response.DepartmentResponse;
 import com.example.demo.response.ResponseObject;
+import com.example.demo.search.DepartmentFilter;
 import com.example.demo.service.IDepartmentService;
 
 import jakarta.validation.Valid;
@@ -110,18 +112,27 @@ public class DepartmentController {
 				new ResponseObject("ok", messageSource.getMessage("delete.message", null, locale), 0, department));
 	}
 
-	@GetMapping("/search")
-	private List<Department> searchWithDepartmentName(@RequestParam String name) {
-		return departmentService.searchWithDepartmentName(name);
-	}
+	@GetMapping("/search-filter")
+	private ResponseEntity<List<Department>> searchWithDepartmentName(
+			@RequestParam(name = "department-name", required = false) String name,
+			@RequestParam(name = "minId", required = false) Short minId,
+			@RequestParam(name = "maxId", required = false) Short maxId,
+			@RequestParam(name = "min-total-member", required = false) Long minTotalMember,
+			@RequestParam(name = "max-total-member", required = false) Long maxTotalMember,
+			@RequestParam(name = "min-created-date", required = false) LocalDate minCreatedDate,
+			@RequestParam(name = "max-created-date", required = false) LocalDate maxCreatedDate,
+			@RequestParam(name = "min-year", required = false) Integer minYear,
+			@RequestParam(name = "max-year", required = false) Integer maxYear) {
+		List<Department> listDepartment = departmentService
+				.searchFilterWithDepartment(DepartmentFilter.builder().departmentName(name).minId(minId).maxId(maxId)
+						.minTotalMember(minTotalMember).maxTotalMember(maxTotalMember).minCreatedDate(minCreatedDate)
+						.maxCreatedDate(maxCreatedDate).minYear(minYear).maxYear(maxYear).build());
+		if (listDepartment != null) {
 
-	@GetMapping("/min-max")
-	private List<Department> minMaxMyDepartmentId(@RequestParam String min, @RequestParam String max) {
-		return departmentService.minMaxWithDepartmentId(min, max);
-	}
+			return ResponseEntity.ok(listDepartment);
+		}
 
-	@GetMapping("/account")
-	private List<Department> numberOfEmployeesBetween(@RequestParam Long min, @RequestParam Long max) {
-		return departmentService.numberOfEmployeesBetween(min, max);
+		return ResponseEntity.badRequest().body(null);
+
 	}
 }

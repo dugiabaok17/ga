@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 
 import com.example.demo.entity.Department;
 import com.example.demo.response.DepartmentResponse;
+import com.example.demo.search.DepartmentFilter;
 
 public interface IDepartmentService {
 	public Page<DepartmentResponse> getAllDepartments(Integer pageNo, Integer pageSize, String sortBy);
@@ -20,9 +21,5 @@ public interface IDepartmentService {
 
 	public void deleteDepartment(short id);
 
-	List<Department> searchWithDepartmentName(String name);
-
-	List<Department> minMaxWithDepartmentId(String min, String max);
-
-	List<Department> numberOfEmployeesBetween(Long minAccount, Long maxAccount);
+	List<Department> searchFilterWithDepartment(DepartmentFilter department);
 }
