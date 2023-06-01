@@ -85,7 +85,7 @@ public class DepartmentServiceImpl implements IDepartmentService {
 		}
 
 		if (department.getMinId() != null && department.getMaxId() != null) {
-			System.out.println("Hello vào đây này");
+
 			specification = specification.and(
 					CustomDepartmentRepository.minMaxWithDepartmentId(department.getMinId(), department.getMaxId()));
 		}
@@ -96,15 +96,15 @@ public class DepartmentServiceImpl implements IDepartmentService {
 		}
 
 		if (department.getMinCreatedDate() != null && department.getMaxCreatedDate() != null) {
-			System.out.println("hello dư văn an");
+
 			specification = specification.and(CustomDepartmentRepository
 					.minMaxCreatedDateDepartment(department.getMinCreatedDate(), department.getMaxCreatedDate()));
 		}
-		
+
 		if (department.getMinYear() != null && department.getMaxYear() != null) {
-			System.out.println("hello dư văn an");
-			specification = specification.and(CustomDepartmentRepository
-					.minMaxYearDepartment(department.getMinYear(), department.getMaxYear()));
+
+			specification = specification.and(
+					CustomDepartmentRepository.minMaxYearDepartment(department.getMinYear(), department.getMaxYear()));
 		}
 
 		List<Department> departments = departmentRepository.findAll(specification);
